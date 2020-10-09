@@ -43,7 +43,7 @@ class MissionList extends Component {
 
   deleteMission(id) {
     axios
-      .delete("http://localhost:5000/profile/missions" + id)
+      .delete("http://localhost:5000/api/profile/missions" + id)
       .then((res) => console.log(res.data));
     this.setState({
       missions: this.state.missions.filter((el) => el._id !== id),
