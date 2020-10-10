@@ -60,7 +60,9 @@ class loginForm extends Component {
             onChange={this.onChangePassword}
           />
           <br />
-          <input type="submit" value="Login" className="btn btn-primary" />
+          <button type="submit" className="btn btn-primary">
+            create
+          </button>
         </form>
       </div>
     );

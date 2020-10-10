@@ -7,7 +7,7 @@ router.route("/missions").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/add").post((req, res) => {
+router.route("/missionCreate").post((req, res) => {
   const email = req.body.email;
   const title = req.body.title;
   const description = req.body.description;
@@ -18,23 +18,24 @@ router.route("/add").post((req, res) => {
 
   newMission
     .save()
-    .then(() => res.json("Mission added!"))
+    .then(() => res.json({ newMission: newMission._id }))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/:id").get((req, res) => {
+router.route("/missions/:id").get((req, res) => {
   Mission.findById(req.params.id)
     .then((mission) => res.json(mission))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/:id").delete((req, res) => {
+//delete mission
+router.route("/missions/:id").delete((req, res) => {
   Mission.findByIdAndDelete(req.params.id)
     .then(() => res.json("mission deleted!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/update/:id").post((req, res) => {
+router.route("/missions/:id").post((req, res) => {
   Mission.findById(req.params.id)
     .then((mission) => {
       mission.email = req.body.email;

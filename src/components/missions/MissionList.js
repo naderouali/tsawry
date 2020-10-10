@@ -7,17 +7,16 @@ const Mission = (props) => (
     <td>{props.mission.email}</td>
     <td>{props.mission.title}</td>
     <td>{props.mission.description}</td>
-    <td>{props.mission.date.substring(0, 1)}</td>
+    <td>{props.mission.date.substring(0, 10)}</td>
     <td>{props.mission.city}</td>
     <td>
-      <Link to={"/edit/" + props.mission._id}>Edit mission</Link>
+      <Link to={"/profile/missions/" + props.mission._id}>Edit</Link>
       <button
-        //href="#"
         onClick={() => {
           props.deleteMission(props.mission._id);
         }}
       >
-        DeleteM
+        Delete
       </button>
     </td>
   </tr>
@@ -32,7 +31,7 @@ class MissionList extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/profile/missions")
+      .get("http://localhost:5000/api/profile/missions/")
       .then((response) => {
         this.setState({ missions: response.data });
       })
@@ -43,7 +42,7 @@ class MissionList extends Component {
 
   deleteMission(id) {
     axios
-      .delete("http://localhost:5000/api/profile/missions" + id)
+      .delete("http://localhost:5000/api/profile/missions/" + id)
       .then((res) => console.log(res.data));
     this.setState({
       missions: this.state.missions.filter((el) => el._id !== id),

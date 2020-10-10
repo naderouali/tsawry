@@ -8,7 +8,7 @@ function Navbar() {
         <b>Tsawry</b>
       </Link>
       <Link to="/home">Home</Link>
-      <Link to="/profile">Profile</Link>
+      <Link to="/profile/missions">Profile</Link>
       <Link to="/about">About</Link>
       <Link to="/login">Login</Link>
       <Link to="/create">Sign Up</Link>

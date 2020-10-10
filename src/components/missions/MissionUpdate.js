@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class MissionCreate extends Component {
-  constructor(props) {
+class MissionUpdate extends Component {
+  /*constructor(props) {
     super(props);
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -114,7 +114,7 @@ class MissionCreate extends Component {
         </form>
       </div>
     );
-  }
+  }*/
 }
 
-export default MissionCreate;
+export default MissionUpdate;

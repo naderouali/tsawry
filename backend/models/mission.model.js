@@ -7,17 +7,15 @@ const missionSchema = new Schema(
     email: {
       type: String,
       unique: true,
-      required: true,
       trim: true,
       minlength: 3,
     },
-    title: { type: String, required: true, trim: true },
+    title: { type: String, trim: true },
     description: { type: String },
     date: {
       type: Date,
-      required: true,
     },
-    city: { type: String, required: true, trim: true },
+    city: { type: String, trim: true },
   },
   { timestamps: true }
 );

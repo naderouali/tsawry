@@ -108,11 +108,9 @@ class signupForm extends Component {
             onChange={this.onChangeBirthday}
           />
           <br />
-          <input
-            type="submit"
-            value="Create account"
-            className="btn btn-primary"
-          />
+          <button type="submit" className="btn btn-primary">
+            create account
+          </button>
         </form>
       </div>
     );

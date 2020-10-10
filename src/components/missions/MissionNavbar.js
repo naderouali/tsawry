@@ -10,11 +10,7 @@ function MissionNavbar() {
         </button>
       </Link>
       <Link to="/profile/missionCreate">
-        <button
-          className="btn btn-primary btn-lg active"
-          // role="button"
-          // aria-pressed="true"
-        >
+        <button className="btn btn-primary btn-lg active" aria-pressed="true">
           Create mission
         </button>
       </Link>

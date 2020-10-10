@@ -11,7 +11,7 @@ class Profile extends Component {
         <h2>My name is.. </h2>
         <MissionNavbar />
         <Route path="/profile/missions" component={MissionList} />
-        <Route path="/profile/MissionCreate" component={MissionCreate} />
+        <Route path="/profile/missionCreate" component={MissionCreate} />
       </Router>
     );
   }
