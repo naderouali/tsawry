@@ -1,120 +1,105 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+//import { useHistory } from "react-router-dom";
 
-class MissionCreate extends Component {
-  constructor(props) {
-    super(props);
+export default function MissionCreate({ setToggle }) {
+  const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [city, setCity] = useState("");
+  const [date, setDate] = useState(new Date());
 
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
-    this.onChangeCity = this.onChangeCity.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+  const [titleError, setTitleError] = useState("");
 
-    this.state = {
-      email: "",
-      title: "",
-      description: "",
-      date: new Date(),
-      city: "",
-    };
-  }
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value,
-    });
-  }
-  onChangeTitle(e) {
-    this.setState({
-      title: e.target.value,
-    });
-  }
-  onChangeDescription(e) {
-    this.setState({
-      description: e.target.value,
-    });
-  }
-  onChangeDate(e) {
-    this.setState({
-      date: e.target.value,
-    });
-  }
-  onChangeCity(e) {
-    this.setState({
-      city: e.target.value,
-    });
-  }
-  onSubmit(e) {
-    e.preventDefault();
+  //var history = useHistory();
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangeTitle = (e) => {
+    if (e.target.value.length >= 5) {
+      setTitleError("more than 5");
+    } else if (e.target.value.includes("!")) {
+      setTitleError("dont write ! in title");
+    } else {
+      setTitleError("");
+    }
+    setTitle(e.target.value);
+  };
+
+  const onSubmit = () => {
     const missions = {
-      email: this.state.email,
-      title: this.state.title,
-      description: this.state.description,
-      date: this.state.date,
-      city: this.state.city,
+      email: email,
+      title: title,
+      description: description,
+      date: date,
+      city: city,
     };
     console.log(missions);
     axios
       .post("http://localhost:5000/api/profile/missionCreate", missions)
       .then((res) => console.log(res.data));
-    window.location = "/profile/missions";
-  }
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <h4>Create a new mission</h4>
+    //history.push("/profile/missions");
+    setToggle(0);
+  };
 
-          <label htmlFor="email">Email</label>
-          <input
-            placeholder="Email"
-            name="email"
-            type="text"
-            value={this.state.email}
-            onChange={this.onChangeEmail}
-          />
-          <br />
-          <label htmlFor="title">title</label>
-          <input
-            name="title"
-            type="text"
-            value={this.state.title}
-            onChange={this.onChangeTitle}
-          />
-          <br />
-          <label htmlFor="description">description</label>
-          <input
-            name="description"
-            type="text"
-            value={this.state.description}
-            onChange={this.onChangeDescription}
-          />
-          <br />
-          <label htmlFor="date">date</label>
-          <input
-            name="date"
-            type="date"
-            value={this.state.date}
-            onChange={this.onChangeDate}
-          />
-          <br />
-          <label htmlFor="city">city</label>
-          <input
-            name="city"
-            type="text"
-            value={this.state.city}
-            onChange={this.onChangeCity}
-          />
-          <br />
-          <button type="submit" className="btn btn-primary">
-            add mission
-          </button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h4>Create a new mission</h4>
+
+      <label htmlFor="email">Email</label>
+      <input
+        placeholder="Email"
+        name="email"
+        type="text"
+        value={email}
+        onChange={onChangeEmail}
+      />
+      <br />
+
+      <label htmlFor="title">title</label>
+      <input name="title" type="text" value={title} onChange={onChangeTitle} />
+      {titleError !== "" && <p style={{ color: "red" }}>{titleError}</p>}
+      <br />
+
+      <label htmlFor="description">description</label>
+      <input
+        name="description"
+        type="text"
+        value={description}
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+      />
+      <br />
+
+      <label htmlFor="date">date</label>
+      <input
+        name="date"
+        type="date"
+        value={date}
+        onChange={(e) => {
+          setDate(e.target.value);
+        }}
+      />
+      <br />
+
+      <label htmlFor="city">city</label>
+      <input
+        name="city"
+        type="text"
+        value={city}
+        onChange={(e) => {
+          setCity(e.target.value);
+        }}
+      />
+      <br />
+
+      <button onClick={onSubmit} className="btn btn-primary">
+        Add mission
+      </button>
+    </div>
+  );
 }
-
-export default MissionCreate;

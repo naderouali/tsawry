@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class MissionUpdate extends Component {
-  /*constructor(props) {
+  constructor(props) {
     super(props);
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -56,16 +56,22 @@ class MissionUpdate extends Component {
     };
     console.log(missions);
     axios
-      .post("http://localhost:5000/api/profile/missionCreate", missions)
-      .then((res) => console.log(res.data));
-    window.location = "/profile/missions";
+      .put(
+        `http://localhost:5000/api/profile/missions/update/${missions._id}`,
+        missions
+      )
+      .then((res) => {
+        this.setState({ missions: res.data });
+        this.props.history.push("/missions");
+      });
+    //window.location = "/profile/missions";
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <h4>Create a new mission</h4>
+          <h4>Update mission: {this.state.title}</h4>
 
           <label htmlFor="email">Email</label>
           <input
@@ -114,7 +120,7 @@ class MissionUpdate extends Component {
         </form>
       </div>
     );
-  }*/
+  }
 }
 
 export default MissionUpdate;

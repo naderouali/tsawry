@@ -1,17 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <ul className="navbar">
-      <Link className="siteName" to="/">
+    <ul className="navbar font">
+      <NavLink className="siteName" to="/">
         <b>Tsawry</b>
-      </Link>
-      <Link to="/home">Home</Link>
-      <Link to="/profile/missions">Profile</Link>
-      <Link to="/about">About</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/create">Sign Up</Link>
+      </NavLink>
+      <NavLink
+        to="/home"
+        style={{ color: "black" }}
+        activeStyle={{ color: "red" }}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={{ color: "black" }}
+        activeStyle={{ color: "red" }}
+        to="/profile/missions"
+      >
+        Profile
+      </NavLink>
+      <NavLink
+        style={{ color: "black" }}
+        activeStyle={{ color: "red" }}
+        to="/about"
+      >
+        About
+      </NavLink>
+      <NavLink
+        style={{ color: "black" }}
+        activeStyle={{ color: "red" }}
+        to="/login"
+      >
+        Login
+      </NavLink>
+      <NavLink
+        style={{ color: "black" }}
+        activeStyle={{ color: "red" }}
+        to="/create"
+      >
+        Sign Up
+      </NavLink>
     </ul>
   );
 }

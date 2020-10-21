@@ -7,7 +7,7 @@ router.route("/missions").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/missionCreate").post((req, res) => {
+router.route("/missionCreate/").post((req, res) => {
   const email = req.body.email;
   const title = req.body.title;
   const description = req.body.description;
@@ -35,7 +35,8 @@ router.route("/missions/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/missions/:id").post((req, res) => {
+//update mission
+router.route("/missions/update/:id").post((req, res) => {
   Mission.findById(req.params.id)
     .then((mission) => {
       mission.email = req.body.email;

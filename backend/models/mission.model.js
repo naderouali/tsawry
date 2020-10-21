@@ -6,9 +6,8 @@ const missionSchema = new Schema(
   {
     email: {
       type: String,
-      unique: true,
       trim: true,
-      minlength: 3,
+      //minlength: 3,
     },
     title: { type: String, trim: true },
     description: { type: String },
