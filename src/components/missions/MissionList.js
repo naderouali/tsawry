@@ -26,7 +26,8 @@ export default function MissionList() {
   // };
 
   useEffect(() => {
-    axios
+    const getMissions = () => {
+      axios
       .get("http://localhost:5000/api/profile/missions/")
       .then((response) => {
         setMissions(response.data);
@@ -34,33 +35,63 @@ export default function MissionList() {
       .catch((error) => {
         console.log(error);
       });
+    }
+
+    getMissions();
   }, []);
 
   return (
-    <div>
-      <h2>Missions list:</h2>
-      <table className="table">
-        <thead className="thead-light">
-          <tr>
-            <th>Email</th>
-            <th>Title</th>
-            <th>Desc</th>
-            <th>Date</th>
-            <th>City</th>
-            <th>actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/*missionsList()*/}
-          {missions.map((currentmission) => (
+    <>
+      <h2 style={{ marginTop: 30, marginBottom: 15 }}>Mission list</h2>
+      <div className="rad" style={{ overflow: "hidden" }}>
+        <div className="missionTabHead" style={{ marginBottom: 5 }}>
+          <div
+            className="emailTab"
+            style={{ backgroundColor: "#2b6dd4", padding: 10, gridColumn: "1/2" }}
+          >
+            Email
+          </div>
+          <div
+            className="titleTab"
+            style={{ backgroundColor: "#2b6dd4", padding: 10, gridColumn: "2/3"  }}
+          >
+            Title
+          </div>
+          <div
+            className="descTab"
+            style={{ backgroundColor: "#2b6dd4", padding: 10, gridColumn: "3/4"  }}
+          >
+            Description
+          </div>
+          <div
+            className="dateTab"
+            style={{ backgroundColor: "#2b6dd4", padding: 10, gridColumn: "4/5"  }}
+          >
+            Date
+          </div>
+          <div
+            className="cityTab"
+            style={{ backgroundColor: "#2b6dd4", padding: 10, gridColumn: "5/6"  }}
+          >
+            City
+          </div>
+          <div
+            className="actionsTab"
+            style={{ backgroundColor: "#2b6dd4", padding: 10, gridColumn: "6/8" }}
+          >
+            Actions
+          </div>
+        </div>
+        <div>
+          {missions.map((currentMission) => (
             <Mission
-              mission={currentmission}
+              mission={currentMission}
               deleteMission={deleteMission}
-              key={currentmission._id}
+              key={currentMission._id}
             />
           ))}
-        </tbody>
-      </table>
-    </div>
+        </div>
+      </div>
+    </>
   );
 }

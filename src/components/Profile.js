@@ -4,7 +4,6 @@ import MissionList from "./missions/MissionList";
 import MissionCreate from "./missions/MissionCreate";
 import MissionUpdate from "./missions/MissionUpdate";
 import MissionNothing from "./missions/MissionNothing";
-import { Container } from "react-bootstrap";
 
 // function Profile() {
 //   return (
@@ -26,13 +25,13 @@ export default function Profile() {
   const [toggle, setToggle] = useState(0);
 
   return (
-    <Container>
+    <div className="font">
       <MissionNavbar toggle={toggle} setToggle={setToggle} />
 
       {toggle === 0 && <MissionList />}
       {toggle === 1 && <MissionCreate setToggle={setToggle} />}
       {toggle === 2 && <MissionUpdate />}
       {toggle === 3 && <MissionNothing />}
-    </Container>
+    </div>
   );
 }

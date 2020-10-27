@@ -1,71 +1,54 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-class loginForm extends Component {
-  constructor(props) {
-    super(props);
+export default function LoginForm() {
+    
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+  
 
-    this.state = {
-      email: "",
-      password: "",
-    };
+const onSubmit = () => {
+  const user = {
+    email: email,
+    password: password,
+  };
+  axios
+  .post("http://localhost:5000/users/login", user)
+  .then((res) => console.log(res.data))
+  //window.location = "/";
+}
+
+const style = {
+  container: {
+
   }
+}
 
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value,
-    });
-  }
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value,
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    const user = {
-      email: this.state.email,
-      password: this.state.password,
-    };
-    console.log(user);
-    axios
-      .post("http://localhost:5000/users/login", user)
-      .then((res) => console.log(res.data));
-    //window.location = "/";
-  }
-
-  render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <h1>Login</h1>
+      <div  style={{paddingLeft: "12%", paddingRight: "12%" ,paddingTop:20, backgroundColor: "red", width: "100%", minHeight: "100vh"}}>
+        <div >
+          <h2>Login</h2>
           <label htmlFor="email">Email</label>
           <input
             name="email"
             type="text"
-            value={this.state.email}
-            onChange={this.onChangeEmail}
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); }}
           />
           <br />
-          <label htmlFor="password">password</label>
+          <label htmlFor="password">Password</label>
           <input
             name="password"
             type="password"
-            value={this.state.password}
-            onChange={this.onChangePassword}
+            value={password}
+            onChange={(e) => { setPassword(e.target.value); }}
           />
           <br />
-          <button type="submit" className="btn btn-primary">
-            create
+          <button onClick={onSubmit} className="btn btn-primary">
+            Log in
           </button>
-        </form>
+        </div>
       </div>
     );
-  }
 }
-export default loginForm;

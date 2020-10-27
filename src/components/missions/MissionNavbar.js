@@ -7,15 +7,13 @@ const style = {
     borderWidth: 0,
     padding: 20,
     fontSize: 20,
+    cursor: "pointer",
   },
 };
 
 function MissionNavbar({ toggle, setToggle }) {
   return (
-    <div
-      className="MissionsNavbarGrid grid-container"
-      style={style.MissionNavbar}
-    >
+    <div className="MissionsNavbarGrid" style={{marginTop: 50}} >
       <button
         className="item1"
         style={style.buttons}

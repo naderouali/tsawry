@@ -6,17 +6,15 @@ import SignupForm from "./components/signupForm";
 import Home from "./components/home";
 import About from "./components/about";
 import Profile from "./components/Profile";
+import Footer from "./components/footer";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.min.css";
-import { Container } from "react-bootstrap";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <br />
-      <Container className="font">
+      <div style={{position:"absolute",  height: 150, width: "100vw",top:0, backgroundImage: `linear-gradient(to top, rgba(255,0,0,0), rgba(0, 99, 228, 0.65))`, }}/>
+      <div className="font" >
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/home" component={Home} />
@@ -25,7 +23,8 @@ function App() {
           <Route path="/login" component={LoginForm} />
           <Route path="/create" component={SignupForm} />
         </Switch>
-      </Container>
+      </div>
+      <Footer />
     </Router>
   );
 }
