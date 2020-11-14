@@ -8,7 +8,24 @@
 
 body {
   margin-top: 83px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+}
+
+.loginInput::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(75, 75, 75);
+  font-style: italic;
+}
+.loginInput::-moz-placeholder { /* Firefox 19+ */
+  color: rgb(75, 75, 75);
+  font-style: italic;
+}
+.loginInput:-ms-input-placeholder { /* IE 10+ */
+  color: rgb(75, 75, 75);
+  font-style: italic;
+}
+.loginInput:-moz-placeholder { /* Firefox 18- */
+  color: rgb(75, 75, 75);
+  font-style: italic;
 }
 
 .homeImage{
@@ -68,6 +85,7 @@ body {
   border-top-left-radius: 30px;
 }
 
+
 .homeLargeButton{
   padding: 20px;
   font-size: 20px;
@@ -78,3 +96,59 @@ body {
   content: "";
   background: #90EE90;
 }
+
+/* formulaire */
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.1s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 500;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #d3edff, #629ead);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.1s;
+  font-size: 1rem;
+  color: #d8e0e0;
+  font-weight: 500;
+}
+
