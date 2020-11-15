@@ -14,11 +14,12 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start" : "cd backend && node start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build && cd backend && npm install"
+    "heroku-postbuild": "react-scripts build && cd backend && npm install"
   },
   "eslintConfig": {
     "extends": "react-app"
