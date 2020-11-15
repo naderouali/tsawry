@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 
 require("dotenv").config();
 
@@ -33,6 +34,10 @@ const photosRouter = require("./routes/photos.route");
 app.use("/users", usersRouter);
 app.use("/api/profile", missionsRouter);
 app.use("/photos", photosRouter);
+
+
+app.use(express.static(__dirname + '/../build'));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname + '/../build/index.html')))
 
 //listening to server
 app.listen(port, () => {
