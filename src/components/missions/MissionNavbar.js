@@ -13,7 +13,7 @@ const style = {
 
 function MissionNavbar({ toggle, setToggle }) {
   return (
-    <div className="MissionsNavbarGrid" style={{marginTop: 50}} >
+    <div className="MissionsNavbarGrid" style={{ marginTop: 180 }} >
       <button
         className="item1"
         style={style.buttons}

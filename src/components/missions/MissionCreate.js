@@ -46,7 +46,7 @@ export default function MissionCreate({ setToggle }) {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: 80 }}>
       <h4>Create a new mission</h4>
 
       <label htmlFor="email">Email</label>
